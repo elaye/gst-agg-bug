@@ -1,0 +1,25 @@
+[package]
+name = "gst-agg-bug"
+version = "0.1.0"
+authors = ["Elie Génard <elie.genard@laposte.net>"]
+edition = "2018"
+description = "Bug reproduction"
+repository = "https://github.com/elaye/gst-agg-bug"
+
+[dependencies]
+gstreamer = { version = "0.16.1", features = ["v1_14"] }
+gstreamer-sys = { version = "0.9.0", features = ["v1_14"] }
+gstreamer-base = { version = "0.16.0", features = ["v1_14"] }
+gstreamer-video = { version = "0.16.0", features = ["v1_14"] }
+
+glib = "0.10.0"
+
+# once_cell = "1.0"
+
+[lib]
+name = "gstaggbug"
+crate-type = ["cdylib"]
+path = "src/lib.rs"
+
+[build-dependencies]
+gst-plugin-version-helper = "0.2.0"
