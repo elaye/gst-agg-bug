@@ -77,20 +77,22 @@ impl ObjectSubclass for Agg {
 
         let caps = gst::Caps::new_any();
 
-        let src_pad_template = gst::PadTemplate::new(
+        let src_pad_template = gst::PadTemplate::with_gtype(
             "src",
             gst::PadDirection::Src,
             gst::PadPresence::Always,
             &caps,
+            gst_base::AggregatorPad::static_type(),
         )
         .unwrap();
         klass.add_pad_template(src_pad_template);
 
-        let sink_pad_template = gst::PadTemplate::new(
+        let sink_pad_template = gst::PadTemplate::with_gtype(
             "sink",
             gst::PadDirection::Sink,
             gst::PadPresence::Always,
             &caps,
+            gst_base::AggregatorPad::static_type(),
         )
         .unwrap();
         klass.add_pad_template(sink_pad_template);
